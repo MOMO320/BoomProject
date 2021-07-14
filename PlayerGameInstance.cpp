@@ -17,12 +17,12 @@ FPlayerCharacterData* UPlayerGameInstance::GetPlayerCharacterData(int32 Level)
 
 FWeaponData* UPlayerGameInstance::GetSwordData(int32 Level)
 {
-	return ;
+	return SwordDataTable->FindRow<FWeaponData>(*FString::FromInt(Level), TEXT(""));
 }
 
 FWeaponData* UPlayerGameInstance::GetGunData(int32 Level)
 {
-	return nullptr;
+	return GunDataTable->FindRow<FWeaponData>(*FString::FromInt(Level), TEXT(""));
 }
 
 UDataTable* UPlayerGameInstance::DataObjectPath(FString DataPath)
@@ -31,11 +31,11 @@ UDataTable* UPlayerGameInstance::DataObjectPath(FString DataPath)
 
 	if (DT.Succeeded())
 	{
-		MYCHECK(DT.Object->GetRowMap().Num() > 0);
+		if (DT.Object->GetRowMap().Num() < 0)
+			UE_LOG(LogTemp, Warning, TEXT(" === %s : NO Data === "), *DataPath);
+		
 		return DT.Object;
 	}
-
-	MYLOG(Warning, TEXT("%s No Data"), DataPath);
 
 	return nullptr;
 }

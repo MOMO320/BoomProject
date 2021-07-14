@@ -65,7 +65,7 @@ public:
 	FWeaponData* GetSwordData(int32 Level);
 	FWeaponData* GetGunData(int32 Level);
 
-	UDataTable* DataObjectConstrcutor(FString DataPath);
+	UDataTable* DataObjectPath(FString DataPath);
 
 private:
 	UPROPERTY()
