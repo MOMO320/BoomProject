@@ -62,14 +62,20 @@ public:
 	UPlayerGameInstance();
 
 	FPlayerCharacterData* GetPlayerCharacterData(int32 Level);
-	FWeaponData* GetWeaponData(EWeaponMode WeaponMode, int32 Level);
+	FWeaponData* GetSwordData(int32 Level);
+	FWeaponData* GetGunData(int32 Level);
+
+	UDataTable* DataObjectConstrcutor(FString DataPath);
 
 private:
 	UPROPERTY()
 		class UDataTable* PlayerCharacterTable;
 
 	UPROPERTY()
-		class UDataTable* WeaponDataTable;
+		class UDataTable* SwordDataTable;
+
+	UPROPERTY()
+		class UDataTable* GunDataTable;
 
 	
 };
