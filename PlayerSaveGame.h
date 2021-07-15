@@ -31,6 +31,9 @@ public:
 	UPROPERTY()
 		int32 Money;
 
+	UPROPERTY()
+		EWeaponMode WeaponMode;
+
 	// items , Weapone, Armor --> Later
 
 

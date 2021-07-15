@@ -9,4 +9,5 @@ UPlayerSaveGame::UPlayerSaveGame()
 	Level = 1;
 	Exp = 0;
 	Money = 300;
+	WeaponMode = EWeaponMode::SWORD;
 }

@@ -20,22 +20,22 @@ public:
 	AMyPlayerState();
 
 	int32 GetPlayerLevel() const;
-	int32 GetSwordExp() const;
-	int32 GetGunExp() const;
+	int32 GetMoney() const;
 	EWeaponMode GetWeaponeMode() const;
 
 	float GetPlayerExpRatio() const;
-	float GetSwordExpRatio() const;
-	float GetGunExpRatio() const;
 
-	bool AddExp(int32 IncomeExp);
-
+	bool PlayerAddExp(int32 ComeExp);
+	
 	void InitPlayerData();
 	void SavePlayerData();
 
 	FOnPlayerStateChangedDelegate OnPlayerStateChanged;
 
-	void AddPlayerMoney();
+	void AddPlayerMoney(int32 AddMoney);
+
+private:
+	float ExpCalculator(float NextExp, float CurrentExp) const;
 
 public:
 	FString SaveSlotName;
@@ -45,12 +45,16 @@ protected:
 		int32 PlayerLevel;
 
 	UPROPERTY(Transient)
-		int32 Exp;
+		int32 PlayerExp;
 
 	UPROPERTY(Transient)
 		int32 Money;
 
+	UPROPERTY()
+		EWeaponMode WeaponMode;
+
 private:
 	void SetPlayerLevel(int32 newCharacterLevel);
+	struct FPlayerCharacterData* PlayerStatData;
 
 };
